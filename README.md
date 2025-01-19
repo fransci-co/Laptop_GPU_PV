@@ -75,7 +75,7 @@ This will allocated your desired GPU to VM in Hyper-V
 Check to see if driver is loaded on VM device manager 
 
 
-- PostInstall Steps  (Original Intended for gaming, no need otherwise)
+### PostInstall Steps  (Original Intended for gaming, no need otherwise)
 
 Install Parsec from Parsec.app
 Install VBCable Audio Device Emulator
