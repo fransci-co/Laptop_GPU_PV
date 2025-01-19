@@ -1,10 +1,8 @@
 # Laptop_GPU_PV
+
 GPU Partitioning on windows laptop for VMs w/ Windows Hyper-V 
 
-
 A compilation of information on how to do GPU Paravirtualization on windows laptop using Windows Hyper-V.
-
-
 
 Based on Craft Computing tutorial video https://www.youtube.com/watch?v=XLLcc29EZ_8&t=707s&ab_channel=CraftComputing with some adaptations from different sources . Follow the video and pay attention to the differences described bellow on step 7. and 8. 
 
@@ -18,19 +16,23 @@ Updated GPU Drivers
 ## 1. Installation Instructions 
 
 Install HyperV (Turn Windows Features On or Off)
-	- Configure virtual switch for External Network
+	
+ 	- Configure virtual switch for External Network
 	- Disable Enhanced Sessions
 	
 ## 2. Verify GPU Compatibility
-	- Check with Powershell: Get-VMPartitionableGPU
+	
+ 	- Check with Powershell: Get-VMPartitionableGPU
 
 ## 3. Create New VM:
-	- Gen 2
+	
+ 	- Gen 2
 	- 4GB Ram 
 	- 120GB HDD (or how much you want to alocate)
 
 ## 4. VM Settings:
-	- 8 CPU Cores 
+	
+ 	- 8 CPU Cores 
 	- Disable Checkpoints
 
 ## 5. Start VM + Install Windows using ISO file
@@ -38,26 +40,23 @@ Install HyperV (Turn Windows Features On or Off)
 ## 6. Driver Installation 
 
 File Transfers
+	
 	- HOST - C:\Windows\System32\DriverStore\FileRepository\nv_dispi.inf_amd64_[UUID]
 	- GUEST - - To C:\Windows\System32\HostDriverStore\FileRepository\nv_dispi.inf_amd64_[UUID] (You will have to create C:\Windows\System32\HostDriverStore\FileRepository)
-
+ 
 	- HOST - C:\Windows\System32\nv*.* (Every file that begins with nv)
 	- GUEST - C:\Windows\System32\
 
 **NOTE on Laptop**  - The name of the drivers will be different, Device Manager > Your Graphics Card > Properties > Driver > Driver Details > Scroll all the way down, that's the folder you need.
 
 
-
 - GPU Partition -
 
 ## 7. Run PowerShell ISE as Administrator
 
-
-
-
-
 Open GPU-P-Partition.ps1
-	- Set $vm = [VM-NAME]
+	
+ 	- Set $vm = [VM-NAME]
  	- Set-ExecutionPolicy Unrestricted
  	- Set $instance_name = [Instance_name] (Only for Laptop)
 	- Run Script with Play button
@@ -73,10 +72,7 @@ This will allocated your desired GPU to VM in Hyper-V
 
 ## 8. Start VM
 
-Check to see driver is loaded on VM device manager 
-
-
-
+Check to see if driver is loaded on VM device manager 
 
 
 ## PostInstall Steps  (Original Intended for gaming, no need)
